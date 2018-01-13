@@ -1,0 +1,11 @@
+{
+    "request": {
+        "method": "GET",
+        "url": "/book/111/delay"
+    },
+    "response": {
+        "status": 200,
+	"fixedDelayMilliseconds": 2000,
+        "body": "{\"author\":\"First Author\", \"title\": \"First Title\"}"
+    }
+}

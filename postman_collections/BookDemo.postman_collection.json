@@ -1,0 +1,44 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BookDemo",
+		"_postman_id": "6533da90-c653-f3ea-99d8-915615ff6d62",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Book: Add",
+			"request": {
+				"url": "{{url}}/book",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Get",
+			"request": {
+				"url": "{{url}}/book/111",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Not found",
+			"request": {
+				"url": "{{url}}/book/222",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

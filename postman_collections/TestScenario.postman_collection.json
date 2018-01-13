@@ -1,0 +1,129 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TestScenario",
+		"_postman_id": "0dfb8156-9038-ae61-f28f-9e260da6ab65",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Book: Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"posted book: \" + request.data)",
+							"var bookData = JSON.parse(request.data)",
+							"tests[\"Title is First Author\"] = bookData.author",
+							"tests[\"Title is First Title\"] = bookData.title",
+							"tests[\"Response is Created\"] = responseCode.code == 201"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/book",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"author\": \"First Author\", \"title\": \"First Title\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"response body: \" + responseBody)",
+							"var bookData = JSON.parse(responseBody)",
+							"tests[\"Author is First Author\"] = bookData.author == \"First Author\"",
+							"tests[\"Title is First Title\"] = bookData.title == \"First Title\"",
+							"tests[\"Reponse code is OK\"] = responseCode.code == 200"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/book/111",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Book Second Title not exists\"] = responseCode.code == 404"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/book/222",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Book: Get with delay",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"response body: \" + responseBody)",
+							"var bookData = JSON.parse(responseBody)",
+							"tests[\"Author is First Author\"] = bookData.author == \"First Author\"",
+							"tests[\"Title is First Title\"] = bookData.title == \"First Title\"",
+							"tests[\"Reponse code is OK\"] = responseCode.code == 200"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/book/111/delay",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

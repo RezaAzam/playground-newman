@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+    book-service-mock:
+      image: rodolpheche/wiremock:2.13.0-alpine
+      container_name: book-service-mock
+      volumes: 
+        - ./book-service-mock:/home/wiremock
+      ports:
+        - 8080:8080
